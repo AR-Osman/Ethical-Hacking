@@ -1,0 +1,102 @@
+Q1.1)
+import math
+
+class Circle():
+    def __init__(self, radius):
+        self.radius = radius
+    def calcArea(self):
+        Area = math.pi * math.pow(self.radius, 2)
+        print("The Area of the Circle = ", Area)
+    def calcCircumference(self):
+        Circumference = 2 * math.pi * self.radius
+        print("The Circumference of the Circle = ", Circumference)
+    
+circle = Circle(10)
+circle.calcArea()
+circle.calcCircumference()
+
+Q1.3)
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    def calcArea(self):
+        Area = self.length * self.width
+        print("The Area of the Rectangle = ", Area)
+    def calcPerimeter(self):
+        Perimeter = (self.length + self.width) * 2
+        print("The Perimeter of the Rectangle = ", Perimeter)
+
+rectangle = Rectangle(5,10)
+rectangle.calcArea()
+rectangle.calcPerimeter()
+
+Q1.4)
+class Employee:
+    def __init__(self, ID, FirstName, LastName, Salary):
+        self.ID = ID
+        self.FirstName = FirstName
+        self.LastName = LastName
+        self.Salary = Salary
+    def EmployeeDetails(self):
+        id = self.ID
+        print("Employee Name: ", self.FirstName, self.LastName)
+        print("Employee ID: ", id)
+    def AnnualSalary(self):
+        Annual = self.Salary * 12
+        print("The Annual Salary = $", Annual)
+    def SalaryRaise(self):
+        Raise = (self.Salary*0.1) + self.Salary
+        print("The new Salary = $", Raise)
+
+employee = Employee(19204010, "Abdul Rahman", "Osman", 10000)
+employee.EmployeeDetails()
+employee.AnnualSalary()
+employee.SalaryRaise()
+
+Q1.6)
+class BankAccount:
+    def __init__(self, ID, Name, Balance):
+        self.ID = ID
+        self.Name = Name
+        self.Balance = Balance
+    def UserDetails(self):
+        id = self.ID
+        print("User Name: ", self.Name)
+        print("User ID: ", id)
+    def ShowBalance(self):
+        print("Your Balance is: $", self.Balance)
+    def Credit(self):
+        credit = float(input("Please enter the credited amount: "))
+        self.Balance += credit
+        print("Your new Balance is: $", self.Balance)
+    def Debit(self):
+        debit = float(input("Please enter the debited amount: "))
+        if(self.Balance<debit):
+            print("Amount Exceeded Balance")
+        else:
+            self.Balance -= debit
+            print("Your new Balance is: $", self.Balance)
+
+user = BankAccount(19204010, "Abdul Rahman Osman", 10000)    
+def choose():
+    s = 1
+    while(s != 0):
+        print("Choose 1 to check your balance")
+        print("Choose 2 to use the credit service")
+        print("Choose 3 to use the debit service")
+        print("Choose 0 to end the transaction")
+        s = int(input("Please choose a number: "))
+        if(s == 1):
+            user.ShowBalance()
+        elif(s == 2):
+            user.Credit()
+        elif(s == 3):
+            user.Debit()
+        elif(s == 0):
+            break
+        else:
+            print("Please choose a number between 1 and 3")
+
+user.UserDetails()
+print(choose())
