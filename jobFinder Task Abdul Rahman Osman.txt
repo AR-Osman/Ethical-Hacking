@@ -1,0 +1,56 @@
+import requests
+from bs4 import BeautifulSoup
+
+pageCounter = 0
+# create list to append all jobs
+jobs=[]
+
+while True:
+        urlResult = requests.get("https://wuzzuf.net/search/jobs/?q=php&a=hpb")
+        #urlResult = requests.get(f"https://wuzzuf.net/search/jobs/?a=hpb%7Cspbg&q=php&start={pageCounter}")
+
+# save html content
+        markup = urlResult.content
+
+#print(markup)
+
+# take object from beautiful soup
+        bs = BeautifulSoup(markup, 'lxml')
+
+# find h2 from markup
+        jobsfound =int(bs.find('strong').text)
+        if(pageCounter>jobsfound):
+            break
+
+        jobHeadings = bs.find_all('h2', {"class" : "css-m604qf"})
+        jobAnchors = bs.find_all('a' , {"class" : "css-o171kl"})
+        jobLocation = bs.find_all('span' , {"class" : "css-5wys0k"})
+        experienceYears= bs.find_all(lambda tag:tag.name == "span" and "yrs")
+        bs.find_all(lambda tag:tag.name == "span" and "yrs of exp"in tag.text)
+
+        #print(jobHeadings)
+        #print(jobAnchors)
+        #print(jobLocation)
+        print(experienceYears)
+
+
+        for i in range(len(jobHeadings)):
+            jobs.append(jobHeadings[i].text)
+            jobs.append(jobLocation[i].text)
+            jobs.append(experienceYears[i].text)
+
+            pageCounter +=1
+         
+            print("***Page switched successfully***")
+
+#print(jobs)
+
+with open('jobs.txt' , 'w') as jobsFile:
+    for job in jobs:
+        jobsFile.write(job)
+print('Jobs Added Successfully')
+
+with open('jobs.txt' , 'r') as jobsFile:
+    print(jobsFile.read)
+
+#print("The page number = ",pageCounter)
