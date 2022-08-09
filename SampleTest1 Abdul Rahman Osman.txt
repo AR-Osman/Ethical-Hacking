@@ -1,0 +1,167 @@
+(Q1)
+1) A list is an object containing different types of data types like strings and integers while tuples are used to store multiple items in a single variable, the difference between lists 
+and tuples is that lists are mutable meaning that they can be modified/edited while tuples are immutable meaning that it can't be modified/edited
+
+2) Break is statement used in for loops and while loops, they are used to end the loop even if the condition is still true, the continue statement forces the loop to execute even if the 
+condition is false which in that case is skipped and the rest of the loop continues, the pass statement does nothing
+
+3) Self is used to access the methods and attributes of a class
+
+4) Docsrting is used to note down classes and functions/methods in python
+
+5) Example of multiple inheritance in python is that a class can be derived from a parent class which allows access to all features of the parent class to the derived class 
+
+
+
+(Q2)
+1) True
+2) False
+3) False
+4) False
+5) False
+
+
+
+(Q3)
+1) def countVowels():
+    vowels = 0
+    word = input("Enter a word: ")
+    for x in word:
+        if(x == 'a' or x == 'A' or x == 'e' or x == 'E' or x == 'i' or x == 'I' or x == 'o' or x == 'O' or x == 'u' or x == 'U'):
+            vowels += 1
+    print("The vowels count = ", vowels)
+
+countVowels()
+
+2) def sumNumbers(x):
+    sum = 0
+    while(x > 0):  
+       sum += x  
+       x -= 1
+    print("Sum = ", sum)
+
+sumNumbers(10)
+
+3) def Fibonacci():
+    n1 = 0
+    n2 = 1
+    term = int(input("Enter the number of terms : "))
+ 
+    if term <=0:
+        print("Please enter positive number only")
+    else:
+        if term ==1:
+            print(n1,end = " ")
+        else :
+            print("The Fibonacci sequence = ",n1,n2,end=" ")
+            for i in range(2,term):
+                n3 = n1+n2
+                print(n3,end=" ")
+                n1 = n2
+                n2 = n3
+Fibonacci()
+
+4) def find200():
+    i = 200
+    
+    sample_dict = {'a': 100, 'b': 200, 'c': 300}
+    
+    if i in sample_dict.values() :
+
+        print("200 is present in the dict")
+
+    else :
+
+        print("200 is not present in the dict")
+
+find200()
+
+5) import math
+
+class Circle:
+    def __init__(self, radius, colour):
+        self.radius = radius
+        self.colour = colour
+    def calcArea(self):
+        Area = math.pi * math.pow(self.radius, 2)
+        print("The Area of the Circle = ", Area)
+    def setColour(self):
+        Colour = self.colour
+        print("The Colour of the circle is", Colour)
+
+class Cylinder(Circle):
+    def __init__(self, height):
+        self.height = height
+    def calcVolume(self):
+        Volume = math.pi * math.pow(self.radius, 2) * self.height
+        print("The Volume of the Cylinder = ", Volume)
+    
+circle = Circle(1,'Red')
+circle.setColour()
+circle.calcArea()
+cylinder = Cylinder(1)
+cylinder.calcVolume()
+
+
+
+(Q4)
+1) import string 
+import random
+
+uppercase = list(str.upper(string.ascii_letters))
+lowercase = list(str.lower(string.ascii_letters))
+numbers = list(string.digits)
+
+def passwordGenerator():
+    passwordLength = input('Enter password length: ')
+    passwordLength = int(passwordLength)
+    password = []
+    random.shuffle(uppercase)
+    random.shuffle(lowercase)
+    random.shuffle(numbers)
+
+    for i in range(round(passwordLength * 0.4)):
+        password.append(uppercase[i])
+
+    for i in range(round(passwordLength * 0.3)):
+        password.append(lowercase[i])
+
+    for i in range(round(passwordLength * 0.3)):
+        password.append(numbers[i])
+
+    password = "".join(password[0:])
+
+    print("Your Password is : ", password)
+
+passwordGenerator()
+
+
+
+(Q5)
+1) The default constructor is a constructor that the compiler automatically generates while the parameterized constructor is a constructor that the programmer creates with parameters for 
+variables of a class
+
+Default constructor example:
+
+def __init__(self):
+    pass  
+
+Parameterized constructor example:
+
+def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+2) An object is derived from a class and it can be in a form of variables or functions
+
+
+Class Example:
+
+class Person:
+def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+Object example from the above ^^^ class:
+
+P1 = Person('Abdul Rahman' , '21') #P1 is the object
